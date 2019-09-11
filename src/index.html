@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<section>
+  <title>{humanHomepage}</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- Search Engine -->
+  <meta name="description" content="{description}">
+  <meta name="image" content="{imageUrl}">
+  <link rel="canonical" href="{homepage}" />
+
+  <!-- Schema.org for Google -->
+  <meta itemprop="name" content="{name}">
+  <meta itemprop="description" content="{description}">
+  <meta itemprop="image" content="{imageUrl}">
+
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{name}">
+  <meta name="twitter:description" content="{description}">
+  <meta name="twitter:image" content="{imageUrl}">
+  <meta name="twitter:url" content="{absoluteUrl}">
+
+  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+  <meta property="og:title" content="{name}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:image" content="{imageUrl}">
+  <meta property="og:url" content="{absoluteUrl}">
+
+
+  <link rel="shortcut icon" href="{faviconUrl}" />
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4/css/tachyons.min.css" />
+
+
+  <body>
+    <main class="vh-100 dt w-100 bg-{bgColor} {{textFont}} {{timeColor}}">
+      <article class="dtc v-mid ph3 ph4-l">
+        <header class="lh-title pb5 pt5">
+          <h1 class="f6 f2-m f-subheadline-l fw7 tc ma0">Track your incidents</h1>
+          <h2 class="{{textColor}} f4 f3-l fw6 tc ma0 pt3 {{timeFont}}">incidents.now.sh/:id?[query]</h2>
+        </header>
+        <section class="flex items-start flex-column ph5 pb3">
+          <h3 class="f3 f2-l fw7 tc ma0">Usage</h3>
+          <p class="lh-copy f4">
+            Create a new incident namespace just passing an unique identifier (e.g., <a class="blue link dim"
+              href="/incidents">/incidents</a>). The first time you enter on the URL, it'll create a time stamp and it
+            starts counting from that moment.
+          </p>
+          <p class="lh-copy f4">
+            When you want to reset the counter, just pass <code class="fw6 {{timeFont}} {{textColor}}">`?reset`</code>
+            query
+            parameter.
+          </p>
+        </section>
+        <section class="flex items-start flex-column ph5 pb3">
+          <h3 class="f3 f2-l fw7 tc ma0">Customization</h3>
+          <p class="lh-copy f4">
+            The service support a log of customization that needs to be passed as <b>query parameters</b>, being all of
+            them optional:
+          </p>
+          <section class="flex items-start flex-column pt3 pb3">
+            <h3 class="f4 f3-l fw7 tc ma0">theme</h3>
+            <section class="lh-copy f4">
+              <p class="f5 mb0">default: <code class="fw6 {{timeColor}} {{timeFont}}">light</code></p>
+              <p class="f5 mt2 mb0">values: <code class="fw6 {{timeColor}} {{timeFont}}">light</code> | <code
+                  class="fw6 {{timeColor}} {{timeFont}}">dark</code>
+              </p>
+              <p>Select the theme style to use (e.g., <a class="blue link dim"
+                  href="/incidents?theme=dark">/incidents?theme=dark</a>).</p>
+            </section>
+          </section>
+          <section class="flex items-start flex-column pt3 pb3">
+            <h3 class="f4 f3-l fw7 tc ma0">text</h3>
+            <section class="lh-copy f4">
+              <p class="f5 mb0">default: <code class="fw6 {{timeColor}} {{timeFont}}">since last incident</code></p>
+              <p>Customize incident copy (e.g., <a class="blue link dim"
+                  href="/incidents?text=since last ocurrence">/incidents?text=since last ocurrence</a>).
+              </p>
+            </section>
+          </section>
+          <section class="flex items-start flex-column pt3 pb3">
+            <h3 class="f4 f3-l fw7 tc ma0">quote</h3>
+            <section class="lh-copy f4">
+              <p>Attach a message with your incident (e.g., <a class="blue link dim"
+                  href="/incidents?quote=all is working as expected">/incidents?quote=all is working as expected</a>).
+              </p>
+            </section>
+          </section>
+        </section>
+      </article>
+    </main>
+
+  </body>
+
+</html>
