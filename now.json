@@ -12,7 +12,6 @@
     }
   ],
   "env": {
-    "API_KEY": "@incidents.api_key",
     "FIRESTORE_PROJECT_ID": "@incidents.firestore_project_id",
     "FIRESTORE_PRIVATE_KEY": "@incidents.firestore_private_key",
     "FIRESTORE_CLIENT_EMAIL": "@incidents.firestore_client_email"
