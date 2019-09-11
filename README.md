@@ -1,10 +1,3 @@
-# incidents
-
-![Last version](https://img.shields.io/github/tag/Kikobeats/incidents.svg?style=flat-square)
-[![Build Status](https://img.shields.io/travis/com/Kikobeats/incidents/master.svg?style=flat-square)](https://travis-ci.com/Kikobeats/incidents)
-[![Dependency status](https://img.shields.io/david/Kikobeats/incidents.svg?style=flat-square)](https://david-dm.org/Kikobeats/incidents)
-[![Dev Dependencies Status](https://img.shields.io/david/dev/Kikobeats/incidents.svg?style=flat-square)](https://david-dm.org/Kikobeats/incidents#info=devDependencies)
-
 <div align="center">
   <img src="https://api.microlink.io?url=https://incidents.now.sh&browser=light&screenshot&embed=screenshot.url" alt="incidents">
 </div>
