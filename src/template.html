@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{timeAgo} {text} | {name} </title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+
+  <!-- Search Engine -->
+  <meta name="description" content="{description}">
+  <meta name="image" content="{logoUrl}">
+  <link rel="canonical" href="{homepage}" />
+
+  <!-- Schema.org for Google -->
+  <meta itemprop="name" content="{name}">
+  <meta itemprop="description" content="{description}">
+  <meta itemprop="image" content="{logoUrl}">
+
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{name}">
+  <meta name="twitter:description" content="{description}">
+  <meta name="twitter:image" content="{logoUrl}">
+  <meta name="twitter:url" content="{absoluteUrl}">
+  <meta name="twitter:label1" value="time ago" />
+  <meta name="twitter:data1" value="{timeAgo}" />
+  <meta name="twitter:label2" value="quote" />
+  <meta name="twitter:data2" value="{quote}" />
+
+  <!-- Open Graph general (Facebook, Pinterest & Google+) -->
+  <meta property="og:title" content="{name}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:image" content="{logoUrl}">
+  <meta property="og:url" content="{absoluteUrl}">
+
+
+  <link rel="shortcut icon" href="{faviconUrl}" />
+  <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css" />
+
+  <script type="module">
+    import * as preact from 'https://unpkg.com/htm/preact/standalone.mjs';
+
+    const htm = preact.html`
+			<main class="vh-100 dt w-100 bg-{bgColor}">
+				<article class="dtc v-mid tc ph3 ph4-l">
+					<h1 class="f6 f2-m f-headline-l fw6 tc ma0 {timeColor} {timeFont}">{timeAgo}</h1>
+					<h2 class="f6 f2-m f-subheadline-l fw6 tc mv3 {textColor} {textFont}">{text}</h2>
+					<blockquote class="i f6 f2-m f-subheadline-l fw6 tc ma0 {quoteColor} {quoteFont}"> {quote}</blockquote>
+				</article>
+			</main>
+			`
+    preact.render(htm, document.body);
+  </script>
+</head>
+
+<body></body>
+
+</html>

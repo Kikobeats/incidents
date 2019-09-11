@@ -1,0 +1,96 @@
+{
+  "name": "incidents",
+  "description": "Counting incidents over time",
+  "homepage": "https://incidents.now.sh",
+  "version": "0.0.0",
+  "author": {
+    "email": "josefrancisco.verdu@gmail.com",
+    "name": "Kiko Beats",
+    "url": "https://kikobeats.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kikobeats/incidents.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kikobeats/incidents/issues"
+  },
+  "keywords": [
+    "incidents",
+    "microservice"
+  ],
+  "dependencies": {
+    "keyv": "~3.1.0",
+    "keyv-firestore": "~1.0.0",
+    "micro": "~9.3.4",
+    "micro-route": "~2.5.0",
+    "pretty-ms": "~5.0.0",
+    "pupa": "~2.0.1"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "conventional-github-releaser": "latest",
+    "finepack": "latest",
+    "git-authors-cli": "latest",
+    "git-dirty": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "micro-dev": "latest",
+    "npm-check-updates": "latest",
+    "prettier-standard": "latest",
+    "standard": "latest",
+    "standard-markdown": "latest",
+    "standard-version": "latest",
+    "untracked": "latest"
+  },
+  "engines": {
+    "node": ">= 10"
+  },
+  "files": [
+    "src"
+  ],
+  "scripts": {
+    "build": "untracked > .nowignore",
+    "clean": "rm -rf node_modules",
+    "dev": "NODE_ENV=development micro-dev",
+    "lint": "standard-markdown README.md && standard",
+    "postrelease": "npm run release:tags && npm run release:github",
+    "prerelease": "npm run update:check",
+    "pretest": "npm run lint",
+    "release": "standard-version -a",
+    "release:github": "conventional-github-releaser -p angular",
+    "release:tags": "git push --follow-tags origin HEAD:master",
+    "start": "TZ=UTC NODE_ENV=production micro",
+    "test": "exit 0",
+    "update": "ncu -u",
+    "update:check": "ncu -- --error-level 2"
+  },
+  "private": true,
+  "license": "MIT",
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "package.json": [
+      "finepack",
+      "git add"
+    ],
+    "*.js": [
+      "prettier-standard",
+      "git add"
+    ],
+    "*.md": [
+      "standard-markdown",
+      "git add"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "incidents",
+  "version": 2,
+  "regions": [
+    "all"
+  ],
+  "public": true,
+  "builds": [
+    {
+      "src": "src/index.js",
+      "use": "@now/node"
+    }
+  ],
+  "env": {
+    "API_KEY": "@incidents.api_key",
+    "FIRESTORE_PROJECT_ID": "@incidents.firestore_project_id",
+    "FIRESTORE_PRIVATE_KEY": "@incidents.firestore_private_key",
+    "FIRESTORE_CLIENT_EMAIL": "@incidents.firestore_client_email"
+  },
+  "routes": [
+    {
+      "src": "/robots.txt",
+      "status": 204
+    },
+    {
+      "src": "/favicon.ico",
+      "status": 204
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/src/index.js",
+      "headers": {
+        "Access-Control-Allow-Origin": "*"
+      }
+    }
+  ]
+}
