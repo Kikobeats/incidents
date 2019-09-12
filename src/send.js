@@ -7,6 +7,7 @@ const prettyMs = require('pretty-ms')
 const { send } = require('micro')
 const path = require('path')
 const pupa = require('pupa')
+const ms = require('ms')
 
 const template = readFileSync(path.resolve('src', 'template.html'))
 const indexTemplate = readFileSync(path.resolve('src', 'index.html'))
@@ -52,44 +53,29 @@ const themes = {
   }
 }
 
-const getData = async (res, { reset, ...query }, params) => {
+const upsert = async ({ reset, since, ...query }, params) => {
   const { _: id } = params
   if (id === '') return { id }
   let data = reset === undefined && (await db.get(id))
   if (data) return { ...data, id }
-  data = { createdAt: Date.now(), ...query }
+  const createdAt = since ? Date.now() - ms(since) : Date.now()
+  data = { createdAt, ...query }
   await db.set(id, data)
   return { ...data, id }
 }
 
-const indexHtml = ({ createdAt, id }, query) => {
-  const { theme: skin = 'light' } = query
-  const theme = themes[skin]
-
-  const absoluteUrl = encodeURIComponent(
-    `${META.homepage}/${id}?${stringify({
-      theme: skin
-    })}`
-  )
-
-  return pupa(indexTemplate.toString(), {
-    ...theme,
-    ...query,
-    ...META,
-    imageUrl: previewUrl(absoluteUrl, skin),
-    absoluteUrl
-  })
-}
-
-const templateHtml = ({ createdAt, id }, query) => {
-  let {
-    text = 'since last incident',
+const getData = async (query, params) => {
+  const { createdAt, id, ...data } = await upsert(query, params)
+  const {
     theme: skin = 'light',
+    text = 'since last incident',
     quote = ''
   } = query
-  const timeAgo = prettyMs(Date.now() - createdAt, { compact: true })
+
   const theme = themes[skin]
-  if (quote && !quote.startsWith('“')) quote = `“${quote}”`
+  const timeAgo = createdAt
+    ? prettyMs(Date.now() - createdAt, { compact: true })
+    : undefined
 
   const absoluteUrl = encodeURIComponent(
     `${META.homepage}/${id}?${stringify({
@@ -99,22 +85,27 @@ const templateHtml = ({ createdAt, id }, query) => {
     })}`
   )
 
-  return pupa(template.toString(), {
+  return {
     ...theme,
     ...query,
     ...META,
+    ...data,
+    id,
     imageUrl: previewUrl(absoluteUrl, skin),
     absoluteUrl,
-    id,
     timeAgo,
     text,
     quote
-  })
+  }
 }
+
+const indexHtml = data => pupa(indexTemplate.toString(), data)
+
+const templateHtml = data => pupa(template.toString(), data)
 
 const sendHtml = async (res, query, params) => {
   try {
-    const data = await getData(res, query, params)
+    const data = await getData(query, params)
     res.setHeader('Content-Type', 'text/html; charset=utf-8')
     send(
       res,
@@ -127,4 +118,16 @@ const sendHtml = async (res, query, params) => {
   }
 }
 
-module.exports = sendHtml
+const sendJSON = async (res, query, params) => {
+  try {
+    const data = await getData(query, params)
+    res.setHeader('Content-Type', 'application/json; charset=utf-8')
+    send(res, 200, data)
+  } catch (err) {
+    console.error(err)
+    return sendFail(res, { message: err.message })
+  }
+}
+
+module.exports = (res, query, params) =>
+  (query.json === undefined ? sendHtml : sendJSON)(res, query, params)

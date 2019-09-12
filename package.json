@@ -26,6 +26,7 @@
     "keyv-firestore": "~1.0.0",
     "micro": "~9.3.4",
     "micro-route": "~2.5.0",
+    "ms": "~2.1.2",
     "pretty-ms": "~5.0.0",
     "pupa": "~2.0.1"
   },
