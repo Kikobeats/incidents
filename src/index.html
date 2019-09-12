@@ -37,7 +37,7 @@
 
 
   <body>
-    <main class="vh-100 dt w-100 bg-{bgColor} {{textFont}} {{timeColor}}">
+    <main class="mw9 center vh-100 dt w-100 bg-{bgColor} {{textFont}} {{timeColor}}">
       <article class="dtc v-mid ph3 ph4-l">
         <header class="lh-title pb5 pt5">
           <h1 class="f6 f2-m f-subheadline-l fw7 tc ma0">Track your incidents</h1>
@@ -57,7 +57,7 @@
           </p>
         </section>
         <section class="flex items-start flex-column ph5 pb3">
-          <h3 class="f3 f2-l fw7 tc ma0">Customization</h3>
+          <h3 class="f3 f2-l fw7 tc ma0">Query Parameters</h3>
           <p class="lh-copy f4">
             The service support a log of customization that needs to be passed as <b>query parameters</b>, being all of
             them optional:
@@ -88,6 +88,20 @@
               <p>Attach a message with your incident (e.g., <a class="blue link dim"
                   href="/incidents?quote=all is working as expected">/incidents?quote=all is working as expected</a>).
               </p>
+            </section>
+          </section>
+          <section class="flex items-start flex-column pt3 pb3">
+            <h3 class="f4 f3-l fw7 tc ma0">json</h3>
+            <section class="lh-copy f4">
+              <p>When is present, the response format will be a JSON (e.g., <a class="blue link dim"
+                  href="/incidents?json">/incidents?json</a>).</p>
+            </section>
+          </section>
+          <section class="flex items-start flex-column pt3 pb3">
+            <h3 class="f4 f3-l fw7 tc ma0">reset</h3>
+            <section class="lh-copy f4">
+              <p>When is present, it reset the timestamp associated with the namespace (e.g., <a class="blue link dim"
+                  href="/incidents?reset">/incidents?reset</a>).</p>
             </section>
           </section>
         </section>
