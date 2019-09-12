@@ -3,6 +3,7 @@
 const { stringify } = require('querystring')
 const humanizeUrl = require('humanize-url')
 const { readFileSync } = require('fs')
+const fileType = require('file-type')
 const prettyMs = require('pretty-ms')
 const { send } = require('micro')
 const path = require('path')
@@ -12,16 +13,25 @@ const ms = require('ms')
 const template = readFileSync(path.resolve('src', 'template.html'))
 const indexTemplate = readFileSync(path.resolve('src', 'index.html'))
 
+const pkg = require('../package.json')
+const { URL } = require('./constants')
 const db = require('./db')
 
-const pkg = require('../package.json')
-
-const META = {
-  name: pkg.name,
-  description: pkg.description,
-  homepage: pkg.homepage,
-  humanHomepage: humanizeUrl(pkg.homepage),
-  faviconUrl: `${pkg.homepage}/favicon.ico`
+const getMeta = skin => {
+  return {
+    name: pkg.name,
+    description: pkg.description,
+    homepage: URL,
+    humanHomepage: humanizeUrl(URL),
+    faviconUrl: `${URL}/logo-${skin === 'light' ? 'black' : 'white'}.ico`,
+    favicon32Url: `${URL}/logo-${
+      skin === 'light' ? 'black' : 'white'
+    }-32x32.png`,
+    favicon16Url: `${URL}/logo-${
+      skin === 'light' ? 'black' : 'white'
+    }-16x16.png`,
+    logoUrl: `${URL}/logo-${skin === 'light' ? 'black' : 'white'}.png`
+  }
 }
 
 const previewUrl = (url, skin) =>
@@ -77,8 +87,10 @@ const getData = async (query, params) => {
     ? prettyMs(Date.now() - createdAt, { compact: true })
     : undefined
 
+  const meta = getMeta(skin)
+
   const absoluteUrl = encodeURIComponent(
-    `${META.homepage}/${id}?${stringify({
+    `${meta.homepage}/${id}?${stringify({
       theme: skin,
       text,
       quote
@@ -88,7 +100,7 @@ const getData = async (query, params) => {
   return {
     ...theme,
     ...query,
-    ...META,
+    ...meta,
     ...data,
     id,
     imageUrl: previewUrl(absoluteUrl, skin),
@@ -129,5 +141,13 @@ const sendJSON = async (res, query, params) => {
   }
 }
 
-module.exports = (res, query, params) =>
+const sendContent = (res, query, params) =>
   (query.json === undefined ? sendHtml : sendJSON)(res, query, params)
+
+const sendAsset = (res, buffer) => {
+  res.setHeader('Content-Type', fileType(buffer).mime)
+  res.setHeader('cache-control', 'immutable,max-age=31536000')
+  return send(res, 200, buffer)
+}
+
+module.exports = { sendContent, sendAsset }
