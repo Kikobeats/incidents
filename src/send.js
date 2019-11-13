@@ -106,7 +106,7 @@ const getData = async (query, params) => {
     imageUrl: previewUrl(absoluteUrl, skin),
     absoluteUrl,
     timeAgo,
-    text,
+    text: decodeURIComponent(text),
     quote
   }
 }
