@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.3 (2019-11-13)
+
+
+### Bug Fixes
+
+* ensure decode text properly ([9f3c114](https://github.com/Kikobeats/incidents/commit/9f3c1148c29a7ab15cd1c876968a0d7ab3c3b705))
+* ensure decode text properly ([#4](https://github.com/Kikobeats/incidents/issues/4)) ([bdfe236](https://github.com/Kikobeats/incidents/commit/bdfe23695b2f96a956210b95a671c92e60d6a792))
+
 ### 1.0.2 (2019-10-03)
 
 ### 1.0.1 (2019-10-03)
