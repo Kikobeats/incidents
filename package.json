@@ -21,14 +21,14 @@
     "microservice"
   ],
   "dependencies": {
-    "file-type": "~12.4.0",
+    "file-type": "~13.0.1",
     "humanize-url": "~2.1.0",
-    "keyv": "~3.1.0",
+    "keyv": "~4.0.0",
     "keyv-firestore": "~1.0.0",
     "micro": "~9.3.4",
     "micro-route": "~2.5.0",
     "ms": "~2.1.2",
-    "pretty-ms": "~5.0.0",
+    "pretty-ms": "~5.1.0",
     "pupa": "~2.0.1"
   },
   "devDependencies": {
