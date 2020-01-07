@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### 1.0.5 (2020-01-07)
+
+
+### Bug Fixes
+
+* ensure decode text properly ([9f3c114](https://github.com/Kikobeats/incidents/commit/9f3c1148c29a7ab15cd1c876968a0d7ab3c3b705))
+* ensure decode text properly ([#4](https://github.com/Kikobeats/incidents/issues/4)) ([bdfe236](https://github.com/Kikobeats/incidents/commit/bdfe23695b2f96a956210b95a671c92e60d6a792))
+* ensure to encode once ([1ede0de](https://github.com/Kikobeats/incidents/commit/1ede0de15f6504f3d3ca8b2b7c24619bd28c8848))
+
 ### 1.0.4 (2020-01-07)
 
 
