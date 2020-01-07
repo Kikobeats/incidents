@@ -90,11 +90,13 @@ const getData = async (query, params) => {
   const meta = getMeta(skin)
 
   const absoluteUrl = encodeURIComponent(
-    `${meta.homepage}/${id}?${stringify({
-      theme: skin,
-      text,
-      quote
-    })}`
+    decodeURIComponent(
+      `${meta.homepage}/${id}?${stringify({
+        theme: skin,
+        text,
+        quote
+      })}`
+    )
   )
 
   return {
