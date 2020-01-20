@@ -1,9 +1,6 @@
 {
   "name": "incidents",
   "version": 2,
-  "regions": [
-    "all"
-  ],
   "public": true,
   "builds": [
     {
