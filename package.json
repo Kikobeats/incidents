@@ -3,7 +3,7 @@
   "description": "Tracking your incidents over the time.",
   "homepage": "https://incidents.now.sh",
   "main": "src",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
     "name": "Kiko Beats",
