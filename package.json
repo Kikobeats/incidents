@@ -24,7 +24,7 @@
     "file-type": "~14.1.0",
     "humanize-url": "~2.1.0",
     "keyv": "~4.0.0",
-    "keyv-firestore": "~1.0.0",
+    "keyv-firestore": "~1.1.0",
     "micro": "~9.3.4",
     "micro-route": "~2.5.0",
     "ms": "~2.1.2",
