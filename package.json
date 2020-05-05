@@ -21,7 +21,7 @@
     "microservice"
   ],
   "dependencies": {
-    "file-type": "~14.2.0",
+    "file-type": "~14.3.0",
     "humanize-url": "~2.1.0",
     "keyv": "~4.0.0",
     "keyv-firestore": "~1.1.0",
