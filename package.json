@@ -2,7 +2,7 @@
   "name": "incidents",
   "description": "Tracking your incidents over the time.",
   "homepage": "https://incidents.now.sh",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "src",
   "author": {
     "email": "josefrancisco.verdu@gmail.com",
