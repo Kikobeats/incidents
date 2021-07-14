@@ -29,7 +29,7 @@
     "micro-route": "~2.5.0",
     "ms": "~2.1.2",
     "pretty-ms": "~7.0.0",
-    "pupa": "~2.1.0"
+    "pupa": "~3.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
